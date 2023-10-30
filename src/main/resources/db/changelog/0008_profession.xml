@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0008_profession" author="A.Sargsyan">
+        <createTable tableName="profession">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="profession_pkey" nullable="false"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="city" type="varchar"/>
+            <column name="street_name" type="varchar"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="address"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,28 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0010_profession_employee" author="A.Sargsyan">
+        <createTable tableName="profession_employee">
+            <column name="profession_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="profession_profession_employee_pkey" nullable="false"/>
+            </column>
+            <column name="employee_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="employee_profession_employee_pkey" nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="profession_employee"
+                                 baseColumnNames="profession_id"
+                                 referencedTableName="profession"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_profession_profession_employee"/>
+
+        <addForeignKeyConstraint baseTableName="profession_employee"
+                                 baseColumnNames="employee_id"
+                                 referencedTableName="employee"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_employee_profession_employee"/>
+        <addUniqueConstraint tableName="profession_employee" columnNames="profession_id, employee_id"/>
+    </changeSet>
+</databaseChangeLog>

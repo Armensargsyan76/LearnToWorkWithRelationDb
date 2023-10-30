@@ -1,0 +1,23 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0009_profession_insert" author="A.Sargsyan">
+        <sql>
+            insert into profession (name)
+            values('Designer'),
+                  ('Programmer'),
+                  ('Teacher'),
+                  ('Accountant'),
+                  ('Sales manager'),
+                  ('HR'),
+                  ('Project Manager'),
+                  ('Mechanic'),
+                  ('Worker'),
+                  ('director'),
+                  ('QA Tester'),
+                  ('Architect')
+        </sql>
+    </changeSet>
+</databaseChangeLog>

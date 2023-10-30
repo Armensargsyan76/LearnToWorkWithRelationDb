@@ -1,0 +1,29 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0001_employee" author="A.Sargsyan">
+        <createTable tableName="employee">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="employee_pkey" nullable="false"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="surname" type="varchar"/>
+            <column name="age" type="int"/>
+            <column name="salary" type="double"/>
+            <column name="phone" type="varchar"/>
+            <column name="department_id" type="bigint"/>
+            <column name="company_id" type="bigint"/>
+            <column name="is_busy" type="boolean" defaultValue="false"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="employee"
+                                 baseColumnNames="department_id"
+                                 constraintName="fk_employee_department"
+                                 referencedTableName="department"
+                                 referencedColumnNames="id"/>
+        <rollback>
+            <dropTable tableName="employee"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

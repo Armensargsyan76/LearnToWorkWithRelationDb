@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0003_company" author="A.Sargsyan">
+        <createTable tableName="company">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="company_pkey" nullable="false"/>
+            </column>
+            <column name="name" type="varchar"/>
+            <column name="address_id" type="bigint">
+                <constraints unique="true"/>
+            </column>
+            <column name="employee_count" type="int"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="company"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

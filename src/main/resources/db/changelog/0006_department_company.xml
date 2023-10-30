@@ -1,0 +1,28 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0006_department_company" author="A.Sargsyan">
+        <createTable tableName="department_company">
+            <column name="company_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="company_department_company_pkey" nullable="false"/>
+            </column>
+            <column name="department_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="department_department_company_pkey" nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="department_company"
+                                 baseColumnNames="company_id"
+                                 referencedTableName="company"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_company_department_company"/>
+
+        <addForeignKeyConstraint baseTableName="department_company"
+                                 baseColumnNames="department_id"
+                                 referencedTableName="department"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_department_department_company"/>
+        <addUniqueConstraint tableName="department_company" columnNames="company_id, department_id"/>
+    </changeSet>
+</databaseChangeLog>
